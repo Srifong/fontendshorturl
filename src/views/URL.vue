@@ -55,7 +55,7 @@
           <v-progress-circular :size="70" :width="2" color="amber" indeterminate></v-progress-circular>
         </v-card>
       </div>
-      <div v-else-if="check_loading == 2">
+      <div v-else-if="check_loading == 2 && select.name_Album !== 'All Collection'">
         <v-card class="pa-4 ml-5 mr-5 mb-5 mt-3 text-center">
           <span class="text-body-1">No Information </span>
         </v-card>
@@ -179,8 +179,6 @@
         </v-card>
       </div><br>
     </div>
-
-
     <!-- search collection -->
 
 
@@ -215,7 +213,8 @@ export default {
     page: 1,
     Alert: 0,
     select_album: [],
-    check_loading: 0
+    check_loading: 0,
+    message: '' 
   }),
   computed: {
     filterurl1: function () {
@@ -252,6 +251,7 @@ export default {
     copy(value) {
       try {
         navigator.clipboard.writeText(value)
+        alert(`copy sussecc : ${value} `);
       } catch (e) {
         throw e
       }

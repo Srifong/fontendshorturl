@@ -98,7 +98,6 @@ export default createStore({
           },
         })
         .then((res) => {
-          console.log(res,222222222222222222222)
           let get_url = res.data;
           if (get_url.message === "") {
             let get_url = null;

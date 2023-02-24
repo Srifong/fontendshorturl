@@ -4,33 +4,30 @@
       <!-- navbar ด้านข้างซ้าย -->
       <v-navigation-drawer v-model="drawer" app style="background-color: #0d0d0b" :border="0" :temporary="opendrawer"
         width="200">
-        <v-list-item><br />
+        <v-list-item><br /> 
           <v-img alt="Vue logo" class="logo" src="@/assets/weserveLogo.png" max-height="100" max-width="165" />
         </v-list-item>
-        <v-list-item>
-          <v-progress-linear model-value="100" color="weserveyellow" height="1" rounded></v-progress-linear>
-          <!-- <v-progress-linear indeterminate color="yellow-darken-2"></v-progress-linear> -->
-        </v-list-item>
-        <v-list class="pl-6" active-color="weserveyellow" density style="color:gray !important" dense nav>
-          <v-list-item class="pa-4 rounded-s-xl" prepend-icon="mdi-view-dashboard" title="DASHBOARD" to="/">
+        <v-list  active-color="weserveyellow" density style="color:gray !important" dense nav>
+          <v-list-item style="color:yellow" class="pa-4 rounded-s-xl" prepend-icon="mdi-account-circle" :title="this.$store.state.get_userlogin.username">
           </v-list-item>
-          <v-list-item class="pa-4 rounded-s-xl" prepend-icon="mdi-link" title="URL" to="/URL">
+          <v-progress-linear model-value="100" color="weserveyellow" height="1" rounded></v-progress-linear><br>
+          <v-list-item class="pa-4 rounded-s-lg" prepend-icon="mdi-view-dashboard" title="DASHBOARD" to="/">
           </v-list-item>
-          <v-list-item class="pa-4 rounded-s-xl" prepend-icon="mdi-folder" title="COLLECTION" to="/Album">
+          <v-list-item class="pa-4 rounded-s-lg" prepend-icon="mdi-link" title="URL" to="/URL">
           </v-list-item>
-          <!-- <v-list-item class="pa-4 rounded-s-xl" prepend-icon="mdi-account-box" title="ACCOUNT">
-          </v-list-item> -->
+          <v-list-item class="pa-4 rounded-s-lg" prepend-icon="mdi-folder" title="COLLECTION" to="/Album">
+          </v-list-item>
           <!-- <v-spacer></v-spacer>
           <v-list-item class="pa-4 rounded-s-xl" prepend-icon="mdi-logout" title="logout" @click="click_logout">
           </v-list-item> -->
         </v-list>
         <template v-slot:append>
-            <div class="pa-2">
-              <v-btn block color="weserveyellow rounded-lg" prepend-icon="mdi-logout"  @click="click_logout">
-                Logout
-              </v-btn>
-            </div>
-          </template>
+          <div class="pa-2">
+            <v-btn block color="weserveyellow rounded-lg" prepend-icon="mdi-logout" @click="click_logout">
+              Logout
+            </v-btn>
+          </div>
+        </template>
       </v-navigation-drawer>
 
       <!-- bar บน -->
@@ -98,6 +95,14 @@ import create from "@/components/create.vue";
 import axios from "axios";
 export default {
   name: "App",
+  head: {
+    link: [
+      {
+        rel: "icon",
+        href: require("@/assets/weserve1.png")
+      },
+    ]
+  },
   beforeCreate() {
     this.$store.commit("initalizeStore");
     const token = this.$store.state.token;
@@ -107,6 +112,7 @@ export default {
       axios.defaults.headers.common["Authorization"] = "";
     }
   },
+
   components: { Register, Login, create },
   data() {
     return {

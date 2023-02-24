@@ -38,7 +38,7 @@
 
       <div class=" mt-1">
         <v-form v-model="form" @submit.prevent="onSubmit_search">
-          <v-dialog v-model="dialog" class="text-center" :width="size_dialog_date">
+          <v-dialog v-model="dialog" :width="size_dialog_date">
             <template v-slot:activator="{ props }">
               <v-btn class="rounded-lg ml-5" color="bule" v-bind="props" prepend-icon="mdi-calendar-month" size="small">
                 <v-span class="text-caption">Check Click</v-span>
@@ -50,7 +50,7 @@
                 <v-card color="weserveyellow pa-3">
                   <v-span class="text-body-2">Check the number of clicks</v-span>
                 </v-card>
-                <v-card class="pa-2">
+                <v-card class="pa-2 text-center">
                   <DatePicker name="date" startingView="dd-MM-YYYY" class="datepicker" :min="newdate" v-model="date"
                     mode="dateTime" columns="1" is-range />
                   <v-spacer></v-spacer>
@@ -135,7 +135,6 @@
 
 
       </div>
-
     </div>
 
 

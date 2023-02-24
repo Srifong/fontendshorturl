@@ -95,7 +95,7 @@
             <span class="text-body-2 ma-2 ">Create Advace URL</span>
           </v-card>
           <v-form v-model="form_create_advace" @submit.prevent="onSubmit_create_advace">
-            <v-card-text class="pl-6 pr-6 pt-6">
+            <v-card-title class="pl-6 pr-6 pt-6">
               <v-row>
                 <v-col cols="12">
                   <v-text-field v-model="url_advace" bg-color="white" append-inner-icon="mdi-link-variant"
@@ -123,9 +123,9 @@
                   </template></v-checkbox>
 
               </v-row>
-            </v-card-text>
+            
             <!-- ปิด -->
-            <v-card-actions class="mr-5">
+            <v-card-actions >
               <v-spacer></v-spacer>
               <v-btn color="red" @click="close_dialog_create_advace">
                 <span class="text-caption">Close</span>
@@ -197,6 +197,7 @@
                 </v-card>
               </v-dialog>
             </v-card-actions>
+          </v-card-title>
           </v-form>
 
         </v-card>
@@ -204,7 +205,7 @@
     </div>
     <div class="pl-5 pr-5 pt-2 " v-if="Alert == 1">
       <v-alert density="comfortable" type="success" variant="tonal">
-        Create URL <strong>success</strong>
+        Create URL <strong>Success</strong>
       </v-alert>
     </div>
   </div>

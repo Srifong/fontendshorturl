@@ -18,7 +18,7 @@
             <!-- แจ้งเตือน -->
             <div class="pl-5 pr-5 pt-3 " v-if="Alert == 1">
                 <v-alert density="comfortable" type="success" variant="tonal">
-                    Update URL <strong>succeed</strong>
+                    Update URL <strong>Succeed</strong>
                 </v-alert>
             </div>
 
@@ -71,7 +71,7 @@
                                     </v-btn></div>
 
                                 <v-card>
-                                    <!-- <v-row>
+                                <!-- <v-row>
                                             <v-col cols="6" class="text-center">
                                                 <v-img :src="g + this.$store.state.get_id_url.code" />
                                             </v-col>
@@ -82,7 +82,7 @@
                                                     Download
                                                 </v-btn>
                                             </v-col>
-                                        </v-row> -->
+                                                </v-row> -->
                                     <v-spacer></v-spacer>
 
                                 </v-card>
@@ -104,36 +104,7 @@
                         <v-sheet class="pl-2 mt-6 mb-1">
                             <v-text-field class="text-caption" density="compact" variant="outlined"
                                 :model-value="this.$store.state.get_id_url.original_link" readonly></v-text-field>
-                            <v-span class="text-caption ">{{ this.$store.state.get_id_url.shortened_link }}</v-span>
-                            <v-btn @click="copy(this.$store.state.get_id_url.shortened_link)" color="bule"
-                                class="text-caption mr-2" variant="text" size="x-small">
-                                Copy </v-btn>
-                            <v-icon v-if="this.$store.state.get_id_url.ex_date_no_play == 0"
-                                color="green">mdi-circle-medium</v-icon>
-                            <v-icon v-if="this.$store.state.get_id_url.ex_date_no_play == 1"
-                                color="grey">mdi-circle-medium</v-icon>
-                            <v-span v-if="this.$store.state.get_id_url.ex_date_no_play == 0"
-                                class="text-caption text-black mr-2">
-                                Active
-                            </v-span>
-                            <v-span v-if="this.$store.state.get_id_url.ex_date_no_play == 1"
-                                class="text-caption text-black mr-2">
-                                inactive
-                            </v-span>
-                            <v-label class="text-caption ">
-                                create
-                                {{
-                                    this.$store.state.get_id_url.date_now
-                                }}</v-label>
-
-                            <v-label class="text-caption ml-3"
-                                v-if="this.$store.state.get_id_url.check_date == 1">End Date
-                                {{
-                                    this.$store.state.get_id_url.ex_date
-                                }}</v-label>
-                            <v-label class="text-caption ml-3"
-                                v-else-if="this.$store.state.get_id_url.data_now == this.$store.state.get_id_url.ex_data">No
-                                End Date</v-label>
+                            
                             <!-- <v-label class="text-caption ml-2">{{ this.$store.state.get_id_url.ex_date }}</v-label> -->
                         </v-sheet>
                     </v-col>
@@ -143,7 +114,7 @@
                                 <template v-slot:activator="{ props }">
                                     <v-btn size="small" class="text-body-1  ma-1" color="weserveyellow" v-bind="props"
                                         @click="chang_select_advace">
-                                        <span class="text-caption">Update</span>
+                                        <span class="text-caption">Edit</span>
                                     </v-btn>
 
                                 </template>
@@ -177,18 +148,18 @@
                                                             hide-details :readonly="loading_normal" name="key"
                                                             type="url"></v-text-field>
                                                     </v-col>
-                                                    <!-- <v-col cols="12">
+                                                <!-- <v-col cols="12">
                                                         <v-text-field v-model="ex_date" mode="dateTime" :columns="2"
                                                             bg-color="white" density="compact" clearable :min="timestamp"
                                                             label="Choose an expiration date " variant="outlined"
                                                             hide-details :readonly="loading_normal" name="ex_date"
                                                             type="date"></v-text-field>
-                                                    </v-col> -->
+                                                            </v-col> -->
                                                     <v-col cols="12" v-if="checkbox1 == true">
                                                         <v-text-field v-model="ex_date" mode="dateTime" :columns="2"
                                                             bg-color="white" density="compact" clearable :min="timestamp"
-                                                            label="Choose End Date " variant="outlined"
-                                                            hide-details :readonly="loading_normal" name="ex_date"
+                                                            label="Choose End Date " variant="outlined" hide-details
+                                                            :readonly="loading_normal" name="ex_date"
                                                             type="date"></v-text-field>
                                                     </v-col>
                                                     <v-checkbox v-model="checkbox1"> <template v-slot:label>
@@ -225,16 +196,15 @@
                                         <span class="text-body-2 ma-2 ">Confirm Delete URL</span>
                                     </v-card>
                                     <v-card-text>
-                                        <v-row class="pa-3">
-                                            <v-col cols="12">
-                                                <v-text-field v-model="url_advace" bg-color="white"
-                                                    append-inner-icon="mdi-link-variant" :rules="validationURl"
-                                                    density="compact" clearable label="ป้อน URL " counter="255"
-                                                    variant="outlined" single-line hide-details :readonly="loading_normal"
-                                                    name="url" type="url">
-                                                </v-text-field>
-                                            </v-col>
-                                        </v-row>
+                                        <v-text-field v-if="url_advace" class="mt-5" v-model="url_advace" bg-color="white"
+                                            prepend-inner-icon="mdi-link-variant" readonly density="compact"
+                                            variant="outlined">
+                                        </v-text-field>
+                                        <v-card v-else class="text-center pa-10" elevation="0" color="weservegrey">
+                                            <v-progress-circular :size="70" :width="2" color="amber"
+                                                indeterminate></v-progress-circular>
+                                        </v-card>
+
                                     </v-card-text>
                                     <v-card-actions>
                                         <v-spacer></v-spacer>
@@ -255,26 +225,62 @@
                         </v-sheet>
                     </v-col>
                 </v-row>
+                <v-row>
+                    <v-col cols="1">
+
+                    </v-col>
+                    <v-col cols="9">
+                        <v-span class="text-caption ">{{ this.$store.state.get_id_url.shortened_link }}</v-span>
+                            <v-btn @click="copy(this.$store.state.get_id_url.shortened_link)" color="bule"
+                                class="text-caption mr-2" variant="text" size="x-small">
+                                Copy </v-btn>
+                            <v-icon v-if="this.$store.state.get_id_url.ex_date_no_play == 0"
+                                color="green">mdi-circle-medium</v-icon>
+                            <v-icon v-if="this.$store.state.get_id_url.ex_date_no_play == 1"
+                                color="grey">mdi-circle-medium</v-icon>
+                            <v-span v-if="this.$store.state.get_id_url.ex_date_no_play == 0"
+                                class="text-caption text-black mr-2">
+                                Active
+                            </v-span>
+                            <v-span v-if="this.$store.state.get_id_url.ex_date_no_play == 1"
+                                class="text-caption text-black mr-2">
+                                inactive
+                            </v-span>
+                            <v-label class="text-caption ">
+                                create
+                                {{
+                                    this.$store.state.get_id_url.date_now
+                                }}</v-label>
+
+                            <v-label class="text-caption ml-3" v-if="this.$store.state.get_id_url.check_date == 1">End Date
+                                {{
+                                    this.$store.state.get_id_url.ex_date
+                                }}</v-label>
+                            <v-label class="text-caption ml-3"
+                                v-else-if="this.$store.state.get_id_url.data_now == this.$store.state.get_id_url.ex_data">No
+                                End Date</v-label>
+                    </v-col>
+                </v-row>
             </v-card><br>
             <!-- {{ url_advace }} -->
             <!-- จบรายละเอียด url -->
 
 
             <!-- {{ timestamp }} -->
-            <!-- <div><v-btn @click="showdate =1">show</v-btn></div>
+        <!-- <div><v-btn @click="showdate =1">show</v-btn></div>
                 <div v-if="showdate ==1">
                     <DatePicker :min="newdate" v-model="date" mode="dateTime" columns="2" is-range />
                     <p>
                         Date:{{ date }}
-                    </p> -->
+                            </p> -->
 
             <!-- {{ this.$store.state.get_id_url }} -->
-            <!-- <a href="#" target="_blank" rel="noreferrer"
+        <!-- <a href="#" target="_blank" rel="noreferrer"
                                 download="https://storage.cloud.google.com/my_project_short_url_01/images/s0SDURSqr.png">
                                 Download
                             </a>
                             <v-btn
-                                @click="downloadImg('https://storage.cloud.google.com/my_project_short_url_01/images/s0SDURSqr.png', '12.png')">download</v-btn> -->
+                                        @click="downloadImg('https://storage.cloud.google.com/my_project_short_url_01/images/s0SDURSqr.png', '12.png')">download</v-btn> -->
             <!-- </div> -->
         </div>
     </v-app>
@@ -309,7 +315,7 @@ export default {
         p: 'https://www.google.com/s2/favicons?sz=64&domain_url=',
         big: 5,
         small: 2,
-        size_dialog_advace : '50%',
+        size_dialog_advace: '50%',
         select: null,
         form_update_advace: false,
         dialog_update_advace: false,
@@ -394,6 +400,7 @@ export default {
         copy(value) {
             try {
                 navigator.clipboard.writeText(value)
+                alert(`copy sussecc : ${value} `);
             } catch (e) {
                 throw e
             }
@@ -497,9 +504,9 @@ export default {
         this.$store.dispatch('getstory', this.$store.state.token)
         this.url = this.$store.state.get_id_url
         this.url_advace = this.$store.state.get_id_url.original_link,
-        this.key = this.$store.state.get_id_url.key,
-        this.ex_date = this.$store.state.get_id_url.ex_date,
-        this.album = this.$store.state.get_id_url.album
+            this.key = this.$store.state.get_id_url.key,
+            this.ex_date = this.$store.state.get_id_url.ex_date,
+            this.album = this.$store.state.get_id_url.album
         this.id = this.$store.state.get_id_url.id
         this.checkbox1 = this.$store.state.get_id_url.check_date
         if (this.$vuetify.display.name == "sm" || this.$vuetify.display.name == "xs") {
