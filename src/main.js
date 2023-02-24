@@ -5,7 +5,7 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 import axios from 'axios'
-
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 axios.defaults.baseURL = "https://pythonshorturl.herokuapp.com"
 
 loadFonts()
