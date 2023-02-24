@@ -251,7 +251,6 @@ export default {
     copy(value) {
       try {
         navigator.clipboard.writeText(value)
-        alert(`copy sussecc : ${value} `);
       } catch (e) {
         throw e
       }
