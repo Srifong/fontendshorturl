@@ -8,9 +8,9 @@
           <v-img alt="Vue logo" class="logo" src="@/assets/weserveLogo.png" max-height="100" max-width="165" />
         </v-list-item>
         <v-list  active-color="weserveyellow" density style="color:gray !important" dense nav>
-          <v-list-item style="color:yellow" class="pa-4 rounded-s-xl" prepend-icon="mdi-account-circle" :title="this.$store.state.get_userlogin.username">
-          </v-list-item>
-          <v-progress-linear model-value="100" color="weserveyellow" height="1" rounded></v-progress-linear><br>
+          <!-- <v-list-item style="color:yellow" class="pa-4 rounded-s-xl" prepend-icon="mdi-account-circle" :title="this.$store.state.get_userlogin.username">
+          </v-list-item> -->
+          <v-progress-linear model-value="100" color="weserveyellow" height="1" rounded></v-progress-linear>
           <v-list-item class="pa-4 rounded-s-lg" prepend-icon="mdi-view-dashboard" title="DASHBOARD" to="/">
           </v-list-item>
           <v-list-item class="pa-4 rounded-s-lg" prepend-icon="mdi-link" title="URL" to="/URL">
@@ -33,17 +33,15 @@
       <!-- bar บน -->
       <v-app-bar app height="50" elevation="0" color="weserveback" prominent>
         <div class="bar" :border="0">
-          <div>
-
-          </div>
           <v-btn.rounded-pill class="pa-5">
             <v-icon @click="drawer = !drawer" icon="mdi-menu" color="weserveback" class="pl-2"></v-icon>
           </v-btn.rounded-pill>
           <!-- <v-toolbar-title style="color: #0d0d0b;" class="text-subtitle-1">Short URL</v-toolbar-title> -->
           <v-spacer></v-spacer>
-          <!-- <v-btn.rounded-pill >
-            <v-icon @click="drawer1 = !drawer1" icon="mdi-bell" color="weserveback" class="mr-2"></v-icon>
-          </v-btn.rounded-pill> -->
+          
+            <v-icon icon="mdi-account-circle" color="black" class="mr-2"></v-icon>
+            <v-span class="text-body-2 text-black mr-5" >{{ this.$store.state.get_userlogin.username }}</v-span>
+
         </div>
       </v-app-bar>
 
