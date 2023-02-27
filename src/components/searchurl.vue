@@ -200,7 +200,7 @@
                                             prepend-inner-icon="mdi-link-variant" readonly density="compact"
                                             variant="outlined">
                                         </v-text-field>
-                                        <v-card v-else class="text-center pa-10" elevation="0" color="weservegrey">
+                                        <v-card v-else class="text-center pa-10" elevation="0" color="white">
                                             <v-progress-circular :size="70" :width="2" color="amber"
                                                 indeterminate></v-progress-circular>
                                         </v-card>

@@ -79,7 +79,7 @@ export default createStore({
           let get_album = res.data;
           if (get_album.message === "") {
             let get_album = null;
-            this.commit("addgetalbum", get_album);
+            localStorage.removeItem('album')
           } else {
             localStorage.setItem("album", JSON.stringify(res.data));
             this.commit("addgetalbum", get_album);
