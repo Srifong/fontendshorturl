@@ -274,7 +274,6 @@ export default {
         if (response.data) {
           console.log(response.data)
           this.$store.dispatch('getAlbum', this.$store.state.token)
-
           setTimeout(() => (this.Alert = 0), 5000)
         }
       })

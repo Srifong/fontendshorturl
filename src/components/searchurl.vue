@@ -186,7 +186,7 @@
 
                             <v-dialog v-model="dialog_delete_advace" persistent :width="size_dialog_advace">
                                 <template v-slot:activator="{ props }">
-                                    <v-btn size="small" class="text-body-1 ma-1" color="red" v-bind="props">
+                                    <v-btn @click="delele_click" size="small" class="text-body-1 ma-1" color="red" v-bind="props">
                                         <span class="text-caption">Delete</span>
                                     </v-btn>
 
@@ -345,6 +345,9 @@ export default {
     //     this.fetchImage();
     // },
     methods: {
+        delele_click(){
+            return this.test()
+        },
         chang_select_advace() {
             const name = this.$store.state.get_id_url.name_Album
             this.select = { name_Album: `${this.$store.state.get_id_url.name_album}`, id: `${this.$store.state.get_id_url.name_album_id}` }
@@ -379,6 +382,7 @@ export default {
                 })
         },
         urldelete() {
+            
             this.dialog_delete_advace = false
             const token = this.$store.state.token
             const value = sessionStorage.getItem("showurlid")
